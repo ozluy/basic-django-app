@@ -1,9 +1,9 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My Django App</title>
+  <title>Awesome Django App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" media="screen" title="main style">
   <link rel="stylesheet" href="{% static 'styles/main.css' %}" media="screen" title="main style">
@@ -26,12 +26,12 @@
             <ul class="list-group">
               <li class="list-group-item"><img src="{% static 'images/'|add:person.avatar' %}" alt="{{person.name}}" /></li>
               <li class="list-group-item">Name: {{ person.name  }}</li>
-              {% if person.experience > 5 and person.experience <= 10 %}
-              <li class="list-group-item">Year of Experince: {{ person.experience }} (Medior)</li>
-              {% elif person.experience > 10 %}
-              <li class="list-group-item">Year of Experince: {{ person.experience }} (Senior)</li>
+              {% if person.experience_year > 5 and person.experience_year <= 10 %}
+              <li class="list-group-item">Year of Experince: {{ person.experience_year }} (Medior)</li>
+              {% elif person.experience_year > 10 %}
+              <li class="list-group-item">Year of Experince: {{ person.experience_year }} (Senior)</li>
               {% else %}
-              <li class="list-group-item">Year of Experince: {{ person.experience }} (Junior)</li>
+              <li class="list-group-item">Year of Experince: {{ person.experience_year }} (Junior)</li>
               {% endif %}
               <li class="list-group-item">Age: {{ person.age }}</li>
               <li class="list-group-item">Location: {{ person.location }}</li>
