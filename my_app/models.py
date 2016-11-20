@@ -21,4 +21,4 @@ class Person(models.Model):
     location = models.CharField(max_length = 100)
     avatar = models.CharField(max_length = 500)
     def __str__(self):
-        return self.name
+        return 'NAME: ' + self.name + ', TITLE: ' + self.title
