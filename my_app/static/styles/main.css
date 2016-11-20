@@ -1,5 +1,9 @@
 body{
   background-color: #36515A; /*indigo*/
+  padding-top: 70px;
+}
+footer{
+  color: #fff;
 }
 .my__app__head{
   color: #fff;

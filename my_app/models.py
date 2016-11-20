@@ -6,6 +6,7 @@ from django.db import models
 """
 Person(
 name = 'Daenerys Targaryen',
+gender = 'female',
 age = 25,
 experience_year =  2,
 title = 'Back-end Developer',
@@ -15,6 +16,7 @@ avatar ='daenerys_targaryen.png')
 
 class Person(models.Model):
     name = models.CharField(max_length = 100)
+    gender = models.CharField(max_length = 6, default = "male")
     experience_year = models.IntegerField()
     age = models.IntegerField()
     title = models.CharField(max_length = 100)
