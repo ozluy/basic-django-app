@@ -13,8 +13,8 @@ def detail(request, person_id):
     return render(request, 'detail.html', {'person': person})
 
 def post_person(request):
-    form = PersonForm(request.POST)
+    form = PersonForm(request.POST, request.FILES)
     if form.is_valid():
         form.save(commit = True)
-        
+
     return HttpResponseRedirect('/')

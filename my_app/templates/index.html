@@ -16,7 +16,7 @@
           </div>
           <div class="panel-body">
             <ul class="list-group">
-              <li class="list-group-item"><img src="{% static 'images/'|add:person.avatar' %}" alt="{{person.name}}" /></li>
+              <li class="list-group-item"><img src="{{ person.image.url }}" alt="{{person.name}}" /></li>
               <li class="list-group-item">Name: {{ person.name  }}</li>
             </ul>
           </div>
@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="panel-body">
-            <form class="" action="post_person/" method="post">
+            <form enctype="multipart/form-data" action="post_person/" method="post">
               {% csrf_token %}
               {{ form.as_p }}
               <div class="form-group">
