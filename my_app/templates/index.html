@@ -4,52 +4,58 @@
 
 {% block content %}
 <div class="container">
+  <h1>{{username}}</h1>
   <div class="row">
     {% for person in persons|dictsort:'experience_year' %}
-    <div class="col-md-4">
-      <a href="/person/{{person.id}}">
-        <div class="panel">
-          <div class="panel-heading">
-            <div class="panel-title">
-              {{ person.title  }}
-            </div>
-          </div>
-          <div class="panel-body">
-            <ul class="list-group">
-              <li class="list-group-item"><img src="{{ person.image.url }}" alt="{{person.name}}" /></li>
-              <li class="list-group-item">Name: {{ person.name  }}</li>
-            </ul>
+    <div class="col-md-3">
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">
+            {{ person.name  }} by <b><a href="/user/{{person.user.username}}">{{person.user.username}}</a></b>
           </div>
         </div>
-      </a>
+        <div class="panel-body">
+          <a href="/person/{{person.id}}">
+            <ul class="list-group">
+              <li class="list-group-item"><img class="img img-circle" src="{{ person.image.url }}" alt="{{person.name}}" /></li>
+              <li class="list-group-item">Job: {{ person.title  }}</li>
+            </ul>
+          </a>
+        </div>
+      </div>
+
 
     </div>
-    {% if forloop.counter == 3 %}
+    {% if forloop.counter == 4 %}
   </div> <br />  <div class="row">
     {% endif %}
     {% endfor %}
   </div>
+  {% if user.is_authenticated %}
   <div class="row">
     <div class="col-md-6">
-        <div class="panel panel-success">
-          <div class="panel-heading">
-            <div class="panel-title">
-              Add New Person
-            </div>
-          </div>
-          <div class="panel-body">
-            <form enctype="multipart/form-data" action="post_person/" method="post">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <div class="form-group">
-                  <input class="form-group-item" type="submit"  value="Submit">
-              </div>
-
-            </form>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Add New Person
           </div>
         </div>
+        <div class="panel-body">
+          <form enctype="multipart/form-data" action="post_person/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+              <input class="form-group-item" type="submit"  value="Submit">
+            </div>
+
+          </form>
+        </div>
+      </div>
 
     </div>
   </div>
+  {% endif %}
+
 </div>
 {% endblock %}
