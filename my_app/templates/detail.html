@@ -20,6 +20,11 @@
           <li class="list-group-item">Year of Experince: {{ person.experience_year }}</li>
           <li class="list-group-item">Age: {{ person.age }}</li>
           <li class="list-group-item">Location: {{ person.location }}</li>
+          <li class="list-group-item">
+            <button type="button" id="likes" data-id="{{ person.id }}" class="btn btn-mini btn-danger glyphicon glyphicon-heart">
+              {% if person.likes > 0 %} {{ person.likes }} {% endif %}
+            </button>
+          </li>          
         </div>
       </div>
     </div>

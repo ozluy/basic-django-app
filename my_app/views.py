@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Person
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .forms import PersonForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -52,3 +52,15 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def like_person(request):
+    person_id = request.POST.get('person_id', None)
+    likes = 0
+    if (person_id):
+        person = Person.objects.get(id = int(person_id))
+        if person is not None:
+            likes = person.likes + 1
+            person.likes = likes
+            person.save()
+
+    return HttpResponse(likes)

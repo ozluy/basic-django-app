@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^user/(\w+)/$', views.profile, name = 'profile'),
     url(r'^user_login/$', views.user_login, name = 'user_login'),
     url(r'^user_logout/$', views.user_logout, name = 'user_logout'),
+    url(r'^like_person/$', views.like_person, name = 'like_person'),
 ]
 if settings.DEBUG:
     urlpatterns += [
